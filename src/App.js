@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
-import Radium,{StyleRoot} from 'radium';
-// import React ,{ useState } from 'react';
+import styled from 'styled-components';
+
 // importing components
 import Person from './Person/Person';
 import './App.css';
+
+const StyledButton = styled.button`
+     background-color:${props => props.alt ? 'red':'green'};
+     color:white;
+     font:inherit;
+     border:1px solid blue;
+     padding:8px;
+     cursor:pointer;
+        
+     &:hover {
+       background-color: ${props => props.alt ? 'salmon':'lightgreen'};
+       color:black;
+     }
+`;
 
 class App extends Component {
   state = {
@@ -87,11 +101,11 @@ class App extends Component {
                 })}
             </div>
         );
-        style.backgroundColor = 'red';
-        style[':hover'] = {
-            backgroundColor:'salmon',
-            color:'black'
-        };
+        // style.backgroundColor = 'red';
+        // style[':hover'] = {
+        //     backgroundColor:'salmon',
+        //     color:'black'
+        // };
     }
 
     let classes = [];
@@ -103,23 +117,21 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-          <div className="App">
+        <div className="App">
             <h1>Hi, i am a react app</h1>
-              <p className={classes.join(' ')}>This is really working!</p>
-              <button
-                  style={style}
-                  onClick={this.togglePersonHandler}>
-                  Toggle Person
-              </button>
-              {persons}
-          </div>
-      </StyleRoot>
+            <p className={classes.join(' ')}>This is really working!</p>
+            <StyledButton
+                alt={this.state.showPersons}
+                onClick={this.togglePersonHandler}>
+                Toggle Person
+            </StyledButton>
+            {persons}
+        </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
 
 // const App = props =>{
 //    const [  personState,setPersonState ] = useState({
