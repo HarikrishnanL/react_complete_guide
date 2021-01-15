@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import './Person.css';
+import './Person.css';
 
 const StyledDiv = styled.div`
        width: 60%;
